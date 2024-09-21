@@ -7,11 +7,14 @@ import { updateInfo } from '../util/requests';
 export default function DomainItem({ domain }) {
   const [info, setInfo] = useState();
   const [isEditing, setIsEditing] = useState();
+
   const [started, setStarted] = useState({
     sub1: domain.NameServerSettings.SubDomains[0].Subhost,
     sub2: domain.NameServerSettings.SubDomains[1].Subhost,
     value1: domain.NameServerSettings.SubDomains[0].Value,
     value2: domain.NameServerSettings.SubDomains[1].Value,
+    main1: domain.NameServerSettings.SubDomains[0].Value,
+    main2: domain.NameServerSettings.MainDomains[1].Value,
   });
   const [updated, setUpdated] = useState(started);
   const [isLoading, setIsLoading] = useState();
@@ -56,12 +59,35 @@ export default function DomainItem({ domain }) {
           </h1>
           <h2 className="mt-4">Main domains:</h2>
           <div>
-            {domain.NameServerSettings.MainDomains[0].RecordType} -{' '}
-            {domain.NameServerSettings.MainDomains[0].Value}
+            {/* {domain.NameServerSettings.MainDomains[0].RecordType} -{' '} */}
+            {/* {isEditing ? }
+            {domain.NameServerSettings.MainDomains[0].Value} */}
+            {isEditing ? (
+              <input
+                className="max-w-[200px] m-4"
+                value={updated.main1}
+                onChange={(e) =>
+                  setUpdated({ ...updated, main1: e.target.value })
+                }
+              />
+            ) : (
+              started.main1
+            )}
           </div>
           <div>
-            {domain.NameServerSettings.MainDomains[1].RecordType} -{' '}
-            {domain.NameServerSettings.MainDomains[1].Value}
+            {/* {domain.NameServerSettings.MainDomains[1].RecordType} -{' '} */}
+            {/* {domain.NameServerSettings.MainDomains[1].Value} */}
+            {isEditing ? (
+              <input
+                className="max-w-[200px] m-4"
+                value={updated.main2}
+                onChange={(e) =>
+                  setUpdated({ ...updated, main2: e.target.value })
+                }
+              />
+            ) : (
+              started.main2
+            )}
           </div>
           <h2 className="mt-4">Sub domains:</h2>
           <div>
