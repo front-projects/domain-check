@@ -6,5 +6,6 @@ import './index.css';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
+    <div id="modal-root"></div>
   </StrictMode>,
 );
