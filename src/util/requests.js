@@ -56,7 +56,7 @@ export const getDomains = async () => {
 export const updateInfo = async (info, domain) => {
   try {
     const response = await axios.patch(
-      `${API_URL}/set-up-domain-dns?main_records=0:0:0:0:0:0:0:1, 0:0:0:0:0:0:0:2&domain=${domain}&main_record_types=a, a&subdomains=${info.sub1}, ${info.sub2}&sub_record_types=a, a&sub_records=${info.value1}, ${info.value2}`,
+      `${API_URL}/set-up-domain-dns?main_records=${info.main1}, ${info.main2}&domain=${domain}&main_record_types=a, a&subdomains=${info.sub1}, ${info.sub2}&sub_record_types=a, a&sub_records=${info.value1}, ${info.value2}`,
     );
     console.log(response);
     if (response.data.SetDnsResponse.Status == 'success') {
