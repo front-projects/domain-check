@@ -53,7 +53,7 @@ export default function DomainItem({ domain }) {
         <Button onClick={() => setInfo(true)}>Show more</Button>
       </div>
       <Modal isOpen={info} onClose={() => setInfo(false)}>
-        <div className="min-w-[400px] flex flex-col items-center text-xl max-sm:min-w-[90vw]">
+        <div className="min-w-[400px] flex flex-col items-center text-xl max-sm:min-w-[90vw] max-h-[100dvh] overflow-auto py-10">
           <h1 className="font-bold w-full border-b-2 p-2 text-center">
             {domain.Name}
           </h1>
