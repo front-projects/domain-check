@@ -14,9 +14,6 @@ export const checkDomain = async (domain) => {
   try {
     const response = await axios.get(
       `${API_URL}/check-domain?domain=${domain}`,
-      {
-        withCredentials: true,
-      },
     );
     // console.log(response);
     if (response.data.SearchResponse.SearchResults[0].Available == 'yes') {
